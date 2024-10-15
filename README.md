@@ -44,4 +44,5 @@ Currently only 1 stack needs to setup environment variables to run, which is the
 
 1. setup external volume for prometheus data
 2. Add env for path for prometheus.yml path
-3. 
+3. Hide Traefik dashboard behind endpoint
+4. SSL certificates?
