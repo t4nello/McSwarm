@@ -29,4 +29,4 @@ cd SwarmStack
 docker stack deploy proxy --compose-file management-compose.yml  
 ```
 
-Login to Portainer and setup the new password http:/<ip/>/Portainer, then deploy other stacks
+Login to Portainer and setup the new password ```http:<ip>/Portainer```, then deploy other stacks
