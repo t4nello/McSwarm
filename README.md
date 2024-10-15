@@ -1,4 +1,8 @@
 
+# MCSwarm
+
+A set of stacks to deploy minecraft server on linux server OS with Grafana, Prometheus, Traefik, Portainer
+
 ## Installation
 
 To deploy this project run
@@ -26,7 +30,3 @@ docker stack deploy proxy --compose-file management-compose.yml
 ```
 
 Login to Portainer and setup the new password http:<ip>/Portainer, then deploy other stacks
-
-
-
-
