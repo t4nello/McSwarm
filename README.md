@@ -26,7 +26,7 @@ Clone the repository and deploy 1st stack with Portainer and Traefik
 ```bash
 git clone https://github.com/t4nello/SwarmStack.git
 cd SwarmStack
-docker stack deploy proxy --compose-file management-compose.yml  
+docker stack deploy proxy --compose-file management-stack.yml  
 ```
 
 Login to Portainer and setup the new password ```http:<ip>/Portainer```, then deploy other stacks
