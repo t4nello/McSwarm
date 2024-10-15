@@ -30,3 +30,18 @@ docker stack deploy proxy --compose-file management-compose.yml
 ```
 
 Login to Portainer and setup the new password ```http:<ip>/Portainer```, then deploy other stacks
+
+##
+ENVS
+Currently only 1 stack needs to setup ENV variables to run, which is the minecraft server stack
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `XMS` | `string` | **Required** Min RAM for java heap size  in megabytes ex. 1024m |
+| `XMX` | `string` | **Required** MAX RAM for java heap size  in megabytes ex. 3096m |
+
+
+##  TODO
+
+1. setup external volume for prometheus data
+2. Add env for path for prometheus.yml path
+3. 
