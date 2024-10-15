@@ -31,9 +31,9 @@ docker stack deploy proxy --compose-file management-compose.yml
 
 Login to Portainer and setup the new password ```http:<ip>/Portainer```, then deploy other stacks
 
-##
-ENVS
-Currently only 1 stack needs to setup ENV variables to run, which is the minecraft server stack
+## Environment Variables
+Currently only 1 stack needs to setup environment variables to run, which is the minecraft server stack:
+
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `XMS` | `string` | **Required** Min RAM for java heap size  in megabytes ex. 1024m |
