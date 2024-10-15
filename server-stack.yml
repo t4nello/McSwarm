@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  minecraft:
+    image: openjdk:21-jdk
+    ports:
+      - "2137:2137"
+    volumes:
+      - minecraft-server:/server
+    environment:
+      - XMS=${XMS}
+      - XMX=${XMX}
+    command: bash -c "cd /server/ && java -Xms$XMS -Xmx$XMX -jar server.jar nogui"
+    deploy:
+      mode: global
+    stdin_open: true
+    tty: true
+    networks:
+      - minecraft
+
+
+volumes:
+  minecraft-server:
+    external: true
+
+networks:
+  minecraft:
+    external: true
