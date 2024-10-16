@@ -58,6 +58,10 @@ services:
       replicas: 1
       placement:
         constraints: [node.role == manager]
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ${GRAFANA_DIR_PATH}/provisioning:/etc/grafana/provisioning
+      - ${GRAFANA_DIR_PATH}/dashboards:/var/lib/grafana/dashboards
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.grafana.rule=PathPrefix(`/grafana`)"
@@ -68,8 +72,6 @@ services:
       - "traefik.http.middlewares.grafana-stripprefix.stripprefix.prefixes=/grafana"
       - "traefik.http.routers.grafana.middlewares=grafana-stripprefix"
       - "traefik.docker.network=monitoring"
-    volumes:
-      - grafana_data:/var/lib/grafana
     ports:
       - "3000:3000"
     depends_on:
