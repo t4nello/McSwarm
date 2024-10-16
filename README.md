@@ -35,3 +35,9 @@ Login to Portainer and setup the new password ```http:<ip>/Portainer```, then de
 | `SERVER_PORT`       | **Required** Port on which the server will run                 | 2137                                 | Server-Stack      |
 | `JAR_FILE`          | **Required** Name of the JAR file for the server               | server.jar                           | Server-Stack      |
 | `PROMETHEUS_CONFIG` | **Required** prometheus.yml config file location               | /home/t4nello/McSwarm/prometheus.yml | Monitoring-Stack  |
+
+## Endpoints
+
+- **`/dashboard`** - Traefik dashboard
+- **`/grafana`** - Grafana dashboard
+- **`/portainer`** - Portainer panel
