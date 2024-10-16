@@ -23,14 +23,15 @@ services:
   prometheus:
     image: prom/prometheus:latest
     volumes:
-      - prometheus_data:/prometheus_data
+      - prometheus_data:/prometheus
+      - ${PROMETHEUS_CONFIG}:/etc/prometheus/prometheus.yml 
     environment:
       - PROMETHEUS_CONFIG=${PROMETHEUS_CONFIG}
     command:
-      - '--config.file=${PROMETHEUS_CONFIG}'  
-      - '--storage.tsdb.path=/prometheus_data'        
-      - '--web.console.libraries=/etc/prometheus/console_libraries'
-      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--config.file=/etc/prometheus/prometheus.yml'  
+      - '--storage.tsdb.path=/prometheus'        
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
       - '--web.enable-lifecycle'
     deploy:
       mode: replicated
