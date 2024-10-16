@@ -40,6 +40,8 @@ Login to Portainer and setup the new password ```http:<ip>/Portainer```, then de
 | `PROMETHEUS_CONFIG` | **Required** prometheus.yml config file location               | /home/t4nello/McSwarm/prometheus.yml       | Monitoring-Stack  |
 | `GRAFANA_DIR_PATH`  | **Required** path to grafana datasources directory             | /home/t4nello/McSwarm/grafana/             | Monitoring-Stack  |
 
+Project also contains example, ready to import .env files.
+
 ## Endpoints
 
 All endpoint begins with IP address of the server
