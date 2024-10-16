@@ -38,6 +38,8 @@ Login to Portainer and setup the new password ```http:<ip>/Portainer```, then de
 
 ## Endpoints
 
+All endpoint begins with IP address of the server
+
 - **`/dashboard`** - Traefik dashboard
 - **`/grafana`** - Grafana dashboard
 - **`/portainer`** - Portainer panel
