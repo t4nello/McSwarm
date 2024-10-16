@@ -27,14 +27,16 @@ Login to Portainer and setup the new password ```http:<ip>/Portainer```, then de
 
 ## Environment Variables
 
-| Parameter           | Description                                                    | Example Value                        | Stack             |
-| :-------------------| :--------------------------------------------------------------| :------------------------------------|-------------------|
-| `XMS`               | **Required** Min RAM for Java heap size in megabytes           | 8192m                                | Server-Stack      |
-| `XMX`               | **Required** MAX RAM for Java heap size in megabytes           | 10240m                               | Server-Stack      |
-| `SERVER_DIR`        | **Required** Directory where the server files are located      | /home/t4nello/server                 | Server-Stack      |
-| `SERVER_PORT`       | **Required** Port on which the server will run                 | 2137                                 | Server-Stack      |
-| `JAR_FILE`          | **Required** Name of the JAR file for the server               | server.jar                           | Server-Stack      |
-| `PROMETHEUS_CONFIG` | **Required** prometheus.yml config file location               | /home/t4nello/McSwarm/prometheus.yml | Monitoring-Stack  |
+| Parameter           | Description                                                    | Example Value                              | Stack             |
+| :-------------------| :--------------------------------------------------------------| :------------------------------------------|-------------------|
+| `XMS`               | **Required** Min RAM for Java heap size in megabytes           | 8192m                                      | Server-Stack      |
+| `XMX`               | **Required** MAX RAM for Java heap size in megabytes           | 10240m                                     | Server-Stack      |
+| `SERVER_DIR`        | **Required** Directory where the server files are located      | /home/t4nello/server                       | Server-Stack      |
+| `SERVER_PORT`       | **Required** Port on which the server will run                 | 2137                                       | Server-Stack      |
+| `JAR_FILE`          | **Required** Name of the JAR file for the server               | server.jar                                 | Server-Stack      |
+| `PROMETHEUS_CONFIG` | **Required** prometheus.yml config file location               | /home/t4nello/McSwarm/prometheus.yml       | Monitoring-Stack  |
+| `PROVISIONING_DIR`  | **Required** path to grafana datasources directory             | /home/t4nello/McSwarm/grafana/provisioning | Monitoring-Stack  |
+| `DASHBOARD_DIR`     |  **Required**  path to grafana dashboards directory            | /home/t4nello/McSwarm/grafana/dashboards   | Monitoring-Stack  |
 
 ## Endpoints
 
