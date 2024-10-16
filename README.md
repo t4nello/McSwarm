@@ -3,6 +3,10 @@
 
 A set of stacks to deploy minecraft server on linux server OS with Grafana, Prometheus, Traefik, Portainer
 
+## Prerequisites
+
+To propelly setup the swarm cluster you have to install docker engine accoring to the instructions on ```https://docs.docker.com/engine/install/```, afer installation follow the steps on ```https://docs.docker.com/engine/install/linux-postinstall/``  
+
 ## Installation
 
 To deploy this project run
@@ -12,7 +16,6 @@ To deploy this project run
   docker network create --driver overlay --scope swarm monitoring
   docker network create --driver overlay --scope swarm management
   docker network create --driver overlay --scope swarm minecraft
-  docker volume create minecraft_server
 ```
 
 Clone the repository and deploy 1st stack with Portainer and Traefik
@@ -35,8 +38,7 @@ Login to Portainer and setup the new password ```http:<ip>/Portainer```, then de
 | `SERVER_PORT`       | **Required** Port on which the server will run                 | 2137                                       | Server-Stack      |
 | `JAR_FILE`          | **Required** Name of the JAR file for the server               | server.jar                                 | Server-Stack      |
 | `PROMETHEUS_CONFIG` | **Required** prometheus.yml config file location               | /home/t4nello/McSwarm/prometheus.yml       | Monitoring-Stack  |
-| `PROVISIONING_DIR`  | **Required** path to grafana datasources directory             | /home/t4nello/McSwarm/grafana/provisioning | Monitoring-Stack  |
-| `DASHBOARD_DIR`     |  **Required**  path to grafana dashboards directory            | /home/t4nello/McSwarm/grafana/dashboards   | Monitoring-Stack  |
+| `GRAFANA_DIR_PATH`  | **Required** path to grafana datasources directory             | /home/t4nello/McSwarm/grafana/             | Monitoring-Stack  |
 
 ## Endpoints
 
