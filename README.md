@@ -1,7 +1,15 @@
 
 # MCSwarm
 
-A set of stacks to deploy minecraft server on linux server OS with Grafana, Prometheus, Traefik, Portainer
+A set of stacks to deploy minecraft server on linux OS with:
+- Node Exporter
+- Prometheus
+- Grafana
+- Traefik
+- Portainer
+- Portainer Agent
+
+Server stack is based on the JDK 21 image 
 
 ## Prerequisites
 
