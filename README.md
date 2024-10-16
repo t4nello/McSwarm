@@ -36,13 +36,7 @@ Currently only 1 stack needs to setup environment variables to run, which is the
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `XMS` | `string` | **Required** Min RAM for java heap size  in megabytes ex. 1024m |
-| `XMX` | `string` | **Required** MAX RAM for java heap size  in megabytes ex. 3096m |
+| `XMS` | `string` | **Required** Min RAM for java heap size  in megabytes ex. 1024m | Server-Stack|
+| `XMX` | `string` | **Required** MAX RAM for java heap size  in megabytes ex. 3096m | Server-Stack |
+| `PROMETHEUS_CONFIG` | `string` | **Required** prometheus.yml config file location  eg /home/admin/prometheus.yml| Monitoring-Stack|
 
-
-##  TODO
-
-1. setup external volume for prometheus data
-2. Add env for path for prometheus.yml path
-3. Hide Traefik dashboard behind endpoint
-4. SSL certificates?
