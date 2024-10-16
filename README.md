@@ -5,7 +5,7 @@ A set of stacks to deploy minecraft server on linux server OS with Grafana, Prom
 
 ## Prerequisites
 
-To propelly setup the swarm cluster you have to install docker engine accoring to the instructions on ```https://docs.docker.com/engine/install/```, afer installation follow the steps on ```https://docs.docker.com/engine/install/linux-postinstall/``  
+To propelly setup the swarm cluster you have to install docker engine accoring to the instructions on https://docs.docker.com/engine/install/, afer installation follow the steps on https://docs.docker.com/engine/install/linux-postinstall/ 
 
 ## Installation
 
