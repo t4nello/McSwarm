@@ -1,7 +1,7 @@
 apiVersion: 1
 
 providers:
-  - name: 'My Dashboard Provider'
+  - name: 'Server Monitor'
     type: file
     orgId: 1
     folder: ''
