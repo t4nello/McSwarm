@@ -3,10 +3,10 @@ version: '3.8'
 services:
 
   traefik:
-    image: "traefik:latest"
+    image: "traefik:v3.1"
     command:
       - --log.level=DEBUG
-      - --api.insecure=true
+      - --api.dashboard=true
       - --providers.docker=true
       - --providers.docker.exposedByDefault=false
       - --entryPoints.web.address=:80
@@ -15,9 +15,16 @@ services:
       - --entryPoints.websecure.forwardedHeaders.insecure=true
     ports:
       - "80:80"
-      - "8080:8080"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"        
+    labels:
+        - traefik.enable=true
+        - "traefik.http.routers.dashboard.entrypoints=web"
+        - "traefik.http.routers.dashboard.rule=PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
+        - "traefik.http.routers.dashboard.service=api@internal"
+        - "traefik.http.routers.dashboard.middlewares=auth"
+        - "traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$4pcCDf/3$$hDRSW.r20pbwjvDsI25Rg0"
+        - "traefik.http.services.dummy-svc.loadbalancer.server.port=9999"   
     networks:
       - minecraft
       - management
