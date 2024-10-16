@@ -14,18 +14,12 @@ To deploy this project run
   docker network create --driver overlay --scope swarm minecraft
   docker volume create minecraft_server
 ```
-Rename jar-server file to server.jar then copy it with agreed eula txt and optional server.properities to docker-volume
-
-```bash
-/var/lib/docker/volumes/minecraft-server/_data
-```
 
 Clone the repository and deploy 1st stack with Portainer and Traefik
 
-
 ```bash
-git clone https://github.com/t4nello/SwarmStack.git
-cd SwarmStack
+git clone https://github.com/t4nello/McSwarm.git
+cd McSwarm
 docker stack deploy proxy --compose-file management-stack.yml  
 ```
 
@@ -34,9 +28,11 @@ Login to Portainer and setup the new password ```http:<ip>/Portainer```, then de
 ## Environment Variables
 Currently only 1 stack needs to setup environment variables to run, which is the minecraft server stack:
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `XMS` | `string` | **Required** Min RAM for java heap size  in megabytes ex. 1024m | Server-Stack|
-| `XMX` | `string` | **Required** MAX RAM for java heap size  in megabytes ex. 3096m | Server-Stack |
-| `PROMETHEUS_CONFIG` | `string` | **Required** prometheus.yml config file location  eg /home/admin/prometheus.yml| Monitoring-Stack|
-
+| Parameter           | Description                                                    | Example Value                        | Stack             |
+| :-------------------| :--------------------------------------------------------------| :------------------------------------|-------------------|
+| `XMS`               | **Required** Min RAM for Java heap size in megabytes           | 8192m                                | Server-Stack      |
+| `XMX`               | **Required** MAX RAM for Java heap size in megabytes           | 10240m                               | Server-Stack      |
+| `SERVER_DIR`        | **Required** Directory where the server files are located      | /home/t4nello/server                 | Server-Stack      |
+| `SERVER_PORT`       | **Required** Port on which the server will run                 | 2137                                 | Server-Stack      |
+| `JAR_FILE`          | **Required** Name of the JAR file for the server               | server.jar                           | Server-Stack      |
+| `PROMETHEUS_CONFIG` | **Required** prometheus.yml config file location               | /home/t4nello/McSwarm/prometheus.yml | Monitoring-Stack  |
