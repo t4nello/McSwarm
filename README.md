@@ -26,7 +26,6 @@ docker stack deploy proxy --compose-file management-stack.yml
 Login to Portainer and setup the new password ```http:<ip>/Portainer```, then deploy other stacks
 
 ## Environment Variables
-Currently only 1 stack needs to setup environment variables to run, which is the minecraft server stack:
 
 | Parameter           | Description                                                    | Example Value                        | Stack             |
 | :-------------------| :--------------------------------------------------------------| :------------------------------------|-------------------|
