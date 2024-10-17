@@ -13,8 +13,17 @@ Server stack is based on the JDK 21 image
 
 ## Prerequisites
 
-To propelly setup the swarm cluster you have to install docker engine accoring to the instructions on https://docs.docker.com/engine/install/, afer installation follow the steps on https://docs.docker.com/engine/install/linux-postinstall/ 
+To propelly setup the swarm cluster you have to install docker engine accoring to the instructions on https://docs.docker.com/engine/install/, afer installation follow the steps on https://docs.docker.com/engine/install/linux-postinstall/ .
 
+Install ```apache2-utils``` package to generate password for Traefik 
+
+```bash
+echo $(htpasswd -nb <username> <password>) | sed -e s/\\$/\\$\\$/g > usersfile
+
+EXPORT  USERSFILE_PATH="full path to created sudoers file
+
+ex. EXPORT USERSFILE_PATH=/home/t4nello/usersfile"
+```
 ## Installation
 
 To deploy this project run
