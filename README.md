@@ -39,14 +39,6 @@ docker stack deploy proxy --compose-file management-stack.yml
 
 Login to Portainer and setup the new password ```http:<ip>/Portainer```, then deploy other stacks
 
-## Credentials:
-Portainer: 
-  Login: admin
-  Password: to be set at first login
-Grafana:
-  Login: admin
-  Password: admin | change at first login
-
 ## Environment Variables
 
 | Parameter           | Description                                                    | Example Value                              | Stack             |
