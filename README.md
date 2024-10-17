@@ -17,13 +17,6 @@ To propelly setup the swarm cluster you have to install docker engine accoring t
 
 Install ```apache2-utils``` package to generate password for Traefik 
 
-```bash
-echo $(htpasswd -nb <username> <password>) | sed -e s/\\$/\\$\\$/g > usersfile
-
-EXPORT  USERSFILE_PATH="full path to created sudoers file
-
-ex. EXPORT USERSFILE_PATH=/home/t4nello/usersfile"
-```
 ## Installation
 
 To deploy this project run
@@ -40,6 +33,7 @@ Clone the repository and deploy 1st stack with Portainer and Traefik
 ```bash
 git clone https://github.com/t4nello/McSwarm.git
 cd McSwarm
+echo $(htpasswd -nb <username> <password>) | sed -e s/\\$/\\$\\$/g > usersfile
 docker stack deploy proxy --compose-file management-stack.yml  
 ```
 
