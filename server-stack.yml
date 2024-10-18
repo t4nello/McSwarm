@@ -3,7 +3,7 @@ services:
   minecraft:
     image: openjdk:21-jdk
     ports:
-      - "${SERVER_PORT}:${SERVER_PORT}"
+      - "${SERVER_PORT:25565}:${SERVER_PORT:25565}"
     volumes:
       - ${SERVER_DIR}:/server
     command: bash -c "cd /server/ && java -Xms${XMS} -Xmx${XMX} -jar ${JAR_FILE} nogui"
