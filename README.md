@@ -17,6 +17,8 @@ To propelly setup the swarm cluster you have to install docker engine accoring t
 
 Install ```apache2-utils``` package to generate password for Traefik 
 
+
+
 ## Installation
 
 To deploy this project run
@@ -36,8 +38,10 @@ cd McSwarm
 echo $(htpasswd -nb <username> <password>) | sed -e s/\\$/\\$\\$/g > usersfile
 docker stack deploy proxy --compose-file management-stack.yml  
 ```
+This will create default username and password for the portainer to deploy all other neccesary stacks
 
 Login to Portainer and setup the new password ```http:<ip>/Portainer```, then deploy other stacks
+
 
 ## Environment Variables
 
@@ -46,7 +50,7 @@ Login to Portainer and setup the new password ```http:<ip>/Portainer```, then de
 | `XMS`               | **Required** Min RAM for Java heap size in megabytes           | 8192m                                      | Server-Stack      |
 | `XMX`               | **Required** MAX RAM for Java heap size in megabytes           | 10240m                                     | Server-Stack      |
 | `SERVER_DIR`        | **Required** Directory where the server files are located      | /home/t4nello/server                       | Server-Stack      |
-| `SERVER_PORT`       | **Required** Port on which the server will run                 | 2137                                       | Server-Stack      |
+| `SERVER_PORT`       | **Optional** Port on which the server will run, Default: 25565 | 2137                                       | Server-Stack      |
 | `JAR_FILE`          | **Required** Name of the JAR file for the server               | server.jar                                 | Server-Stack      |
 | `PROMETHEUS_CONFIG` | **Required** prometheus.yml config file location               | /home/t4nello/McSwarm/prometheus.yml       | Monitoring-Stack  |
 | `GRAFANA_DIR_PATH`  | **Required** path to grafana datasources directory             | /home/t4nello/McSwarm/grafana/             | Monitoring-Stack  |
