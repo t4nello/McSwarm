@@ -38,9 +38,10 @@ cd McSwarm
 echo $(htpasswd -nb <username> <password>) | sed -e s/\\$/\\$\\$/g > usersfile
 docker stack deploy proxy --compose-file management-stack.yml  
 ```
-This will create default username and password for the portainer to deploy all other neccesary stacks
+This will create  username and password to login to the portainer
 
-Login to Portainer and setup the new password ```http:<ip>/Portainer```, then deploy other stacks
+
+Login to Portainer ```http:<ip>/Portainer``` then deploy other stacks
 
 
 ## Environment Variables
