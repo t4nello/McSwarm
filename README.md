@@ -73,7 +73,7 @@ Example values of the Environment Variables are stored in the `example-env-value
 
 All endpoint begins with IP address of the server
 
-- **`/dashboard/`** - Traefik dashboard
+- **`/traefik/dashboard/`** - Traefik dashboard (The trailing slash is mandatory!)
 - **`/grafana`** - Grafana dashboard
 - **`/portainer`** - Portainer panel
 
