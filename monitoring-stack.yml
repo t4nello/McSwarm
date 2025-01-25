@@ -25,7 +25,7 @@ services:
     image: prom/prometheus:latest
     volumes:
       - prometheus_data:/prometheus
-      - ${MONITORING_CONFIG_PATH:/home/$(whoami)/McSwarm/monitoring_config}/prometheus.yml:/etc/prometheus/prometheus.yml 
+      - ${MONITORING_CONFIG_PATH}/prometheus.yml:/etc/prometheus/prometheus.yml 
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.prometheus.rule=PathPrefix(`/prometheus`)"
@@ -74,8 +74,8 @@ services:
     restart: on-failure
     volumes:
       - grafana_data:/var/lib/grafana
-      - ${MONITORING_CONFIG_PATH:/home/$(whoami)/McSwarm/monitoring_config}/provisioning:/etc/grafana/provisioning
-      - ${MONITORING_CONFIG_PATH:/home/$(whoami)/McSwarm/monitoring_config}/dashboards:/var/lib/grafana/dashboards
+      - ${MONITORING_CONFIG_PATH}/provisioning:/etc/grafana/provisioning
+      - ${MONITORING_CONFIG_PATH}/dashboards:/var/lib/grafana/dashboards
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.grafana.rule=PathPrefix(`/grafana`)"
