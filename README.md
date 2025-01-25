@@ -35,7 +35,7 @@ Install ```apache2-utils``` package to generate password for Traefik
 3. Go to cloned repository folder:
 
 ```bash
-cd McSwarm/managament
+cd McSwarm
 ```
 4. create username and password for traefik dashboard:
 
