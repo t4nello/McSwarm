@@ -59,12 +59,12 @@ Login to Portainer ```http:<ip>/portainer``` then deploy other stacks
 | Variable                   | Stack      | Required? | Default value                              |
 |----------------------------|------------|-----------|--------------------------------------------|
 | MINECRAFT_SERVER_PORT      | Managament | No        | 25565                                      |
-| MONITORING_CONFIG_PATH     | Monitoring | Yes       | /home/$(whoami)/McSwarm/monitoring_config/ |
+| MONITORING_CONFIG_PATH     | Monitoring | Yes       |                                            |
 | GF_SECURITY_ADMIN_USER     | Monitoring | Yes       |                                            |
 | GF_SECURITY_ADMIN_PASSWORD | Monitoring | Yes       |                                            |
 | XMS                        | Server     | No        | 1024m                                      |
 | XMX                        | Server     | No        | 4098m                                      |
-| SERVER_DIR                 | Server     | Yes       | /home/$(whoami)/server                     |
+| SERVER_DIR                 | Server     | Yes       |                                            |
 | JAR_FILE_NAME              | Server     | Yes       | server.jar                                 |
 
 Example values of the Environment Variables are stored in the `example-env-values` folder
