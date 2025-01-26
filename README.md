@@ -76,8 +76,8 @@ All endpoint begins with IP address of the server
 
 - **`/traefik/dashboard/`** - Traefik dashboard (The trailing slash is mandatory!)
 - **`/grafana`** - Grafana dashboard
-- **`/portainer`** - Portainer panel
-
+- **`/portainer`** - Portainer administration panel
+- **`/prometheus`** - Prometheus panel
 ## Dashboard
 
 This project uses a dashboard based on the [Node Exporter Full](https://grafana.com/grafana/dashboards/1860-node-exporter-full/) from Grafana Labs.
