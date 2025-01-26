@@ -6,7 +6,6 @@ else
   PORT=$1
 fi
 
-# Sprawdzenie, czy podany port jest liczbą z zakresu 0-65535
 if ! [[ "$PORT" =~ ^[0-9]+$ ]] || [ "$PORT" -lt 0 ] || [ "$PORT" -gt 65535 ]; then
   echo "Error: Port number must be an integer from range 0-65535"
   exit 1
