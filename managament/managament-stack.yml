@@ -27,7 +27,7 @@ services:
       - mode: host
         protocol: tcp
         published: ${MINECRAFT_SERVER_PORT:-25565}
-        target: 25565
+        target: ${MINECRAFT_SERVER_PORT:-25565}
     deploy:
       mode: global
     volumes:
