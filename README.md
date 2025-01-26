@@ -9,7 +9,7 @@ A set of stacks to deploy minecraft server on linux OS with:
 - Portainer
 - Portainer Agent
 
-Server stack is based on the JDK 21 image 
+Minecraft server is based on the JDK 21 image 
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ Install ```apache2-utils``` package to generate password for Traefik
 
 ## Installation
 
-1. Create all needed network interfaces
+1. Initialize swarm node and create all needed network interfaces
 
 ```bash
   docker swarm init --advertise-addr <ip/ifname>
