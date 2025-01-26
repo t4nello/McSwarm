@@ -54,6 +54,7 @@ chmod +x deploy.sh
 
 Login to Portainer ```http:<ip>/portainer``` then deploy other stacks
 
+Before deployment the server stack it is advised to create folder on your machine with all neccesary files needed  to run minecraft server like server.jar and eula.txt, then pass te proper values into the right environment variables. During first startup of the stack, if all variables are passed correctly, all neccesary files like server.properites, world etc. will be created. After that you can stop the stack and modify your server and run it again.
 
 ## Environment Variables
 
