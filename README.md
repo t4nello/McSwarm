@@ -45,9 +45,10 @@ htpasswd -Bc -C 6 ./managament/usersfile <userame>
 At this point you will be asked to type then retype password.
 
 5. To deploy the application, you need to grant execute permissions to the deploy script and then run it:
+Parameter <port> is used to set the port for minecraft server. Alloved values are 0-65535. If parameter is empty, default 25565 will be used
 ```bash
 chmod +x deploy.sh
-./deploy.sh
+./deploy.sh  <port>
 ```
 
 

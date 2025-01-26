@@ -1,8 +1,7 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-  echo "Usage: $0 <port (0-65535)>"
-  exit 1
+  echo "MINECRAFT_SERVER_PORT=25565" > ./managament/managament-stack.env
 fi
 
 if ! [[ "$1" =~ ^[0-9]+$ ]] || [ "$1" -lt 0 ] || [ "$1" -gt 65535 ]; then
