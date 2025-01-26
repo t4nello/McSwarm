@@ -39,6 +39,7 @@ services:
       - "traefik.http.routers.prometheus.priority=15"
       - "traefik.http.services.prometheus.loadbalancer.server.port=9090"
       - "traefik.docker.network=monitoring"
+      - "traefik.http.routers.prometheus.middlewares=simpleauth"
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'  
       - '--storage.tsdb.path=/prometheus'        
@@ -99,7 +100,7 @@ services:
       - "traefik.http.routers.grafana.priority=10"
       - "traefik.http.services.grafana.loadbalancer.server.port=3000"
       - "traefik.http.middlewares.grafana-stripprefix.stripprefix.prefixes=/grafana"
-      - "traefik.http.routers.grafana.middlewares=grafana-stripprefix"
+      - "traefik.http.routers.grafana.middlewares=grafana-stripprefix, simpleauth"
       - "traefik.docker.network=monitoring"
     depends_on:
       - prometheus

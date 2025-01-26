@@ -11,12 +11,9 @@ services:
       - --api=true
       - --providers.docker=true
       - --providers.docker.exposedByDefault=false
-      - --entryPoints.web.address=:80
-      - --entryPoints.web.forwardedHeaders.insecure=true      
+      - --entryPoints.web.address=:80  
       - --entrypoints.websecure.address=:443
-      - --entryPoints.websecure.forwardedHeaders.insecure=true
       - --entrypoints.minecraft-server.address=:${MINECRAFT_SERVER_PORT:-25565}
-      - --entryPoints.minecraft-server.forwardedHeaders.insecure=true
       - --api.basePath=/traefik
     ports:
       - mode: host
@@ -41,8 +38,8 @@ services:
         - "traefik.http.routers.dashboard.entrypoints=web"
         - "traefik.http.routers.dashboard.rule=PathPrefix(`/traefik`)"
         - "traefik.http.routers.dashboard.service=api@internal"
-        - "traefik.http.routers.dashboard.middlewares=test-auth"
-        - "traefik.http.middlewares.test-auth.basicauth.usersfile=./usersfile"
+        - "traefik.http.routers.dashboard.middlewares=simpleauth"
+        - "traefik.http.middlewares.simpleauth.basicauth.usersfile=./usersfile"
         - "traefik.http.services.dummy-svc.loadbalancer.server.port=9999"   
     networks:
       - minecraft
