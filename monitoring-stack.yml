@@ -17,7 +17,12 @@ services:
       replicas: 1
       placement:
         constraints: [node.role == manager]
-    restart: on-failure
+      resources:
+        limits:
+          memory: 256M
+          cpus: "1"
+        reservations:
+          cpus: "0.1"
     networks:
       - monitoring
 
@@ -47,7 +52,12 @@ services:
       replicas: 1
       placement:
         constraints: [node.role == manager]
-    restart: on-failure
+      resources:
+        limits:
+          memory: 256M
+          cpus: "1"
+        reservations:
+          cpus: "0.1"
     networks:
       - monitoring
 
@@ -71,7 +81,12 @@ services:
       replicas: 1
       placement:
         constraints: [node.role == manager]
-    restart: on-failure
+      resources:
+        limits:
+          memory: 256M
+          cpus: "1"
+        reservations:
+          cpus: "0.1"
     volumes:
       - grafana_data:/var/lib/grafana
       - ${MONITORING_CONFIG_PATH}/provisioning:/etc/grafana/provisioning
