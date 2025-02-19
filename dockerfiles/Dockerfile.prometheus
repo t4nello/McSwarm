@@ -1,0 +1,9 @@
+FROM prom/prometheus:latest
+
+COPY ../monitoring/prometheus.yml /etc/prometheus/prometheus.yml
+
+USER root
+RUN chown -R 65534:65534 /etc/prometheus
+
+USER 65534
+CMD ["/bin/prometheus", "--config.file=/etc/prometheus/prometheus.yml"]

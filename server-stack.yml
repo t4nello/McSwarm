@@ -2,18 +2,24 @@ version: '3.8'
 services:
   minecraft:
     image: openjdk:21-jdk
-    ports:
-      - "${SERVER_PORT}:${SERVER_PORT}"
     volumes:
       - ${SERVER_DIR}:/server
-    command: bash -c "cd /server/ && java -Xms${XMS} -Xmx${XMX} -jar ${JAR_FILE} nogui"
+    command: bash -c "cd /server/ && java -Xms${XMS:-1024m} -Xmx${XMX:-4098m} -jar ${JAR_FILE_NAME:-server.jar} nogui"
     deploy:
       mode: global
+      resources:
+        reservations:
+          cpus: "1"
+          memory: ${XMS:-1024m}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.tcp.routers.minecraft-server.entrypoints=minecraft-server"
+      - "traefik.tcp.routers.minecraft-server.rule=HostSNI(`*`)"
+      - "traefik.tcp.services.minecraft-server.loadbalancer.server.port=25565"
     stdin_open: true
     tty: true
     networks:
       - minecraft
-
 networks:
   minecraft:
     external: true

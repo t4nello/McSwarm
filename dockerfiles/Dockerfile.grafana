@@ -1,0 +1,8 @@
+FROM grafana/grafana:latest
+
+USER root
+
+ADD ../monitoring/provisioning /etc/grafana/provisioning
+ADD ../monitoring/dashboards /var/lib/grafana/dashboards
+
+CMD [ "grafana-reporter" ]

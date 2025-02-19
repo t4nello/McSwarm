@@ -17,51 +17,76 @@ services:
       replicas: 1
       placement:
         constraints: [node.role == manager]
+      resources:
+        limits:
+          memory: 256M
+          cpus: "1"
+        reservations:
+          cpus: "0.1"
     networks:
       - monitoring
 
   prometheus:
-    image: prom/prometheus:latest
+    image: wsapon/mcswarm-prometheus:latest
     volumes:
       - prometheus_data:/prometheus
-      - ${PROMETHEUS_CONFIG}:/etc/prometheus/prometheus.yml 
-    environment:
-      - PROMETHEUS_CONFIG=${PROMETHEUS_CONFIG}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.prometheus.rule=PathPrefix(`/prometheus`)"
+      - "traefik.http.routers.prometheus.entryPoints=web"
+      - "traefik.http.routers.prometheus.tls=false"
+      - "traefik.http.routers.prometheus.priority=15"
+      - "traefik.http.services.prometheus.loadbalancer.server.port=9090"
+      - "traefik.docker.network=monitoring"
+      - "traefik.http.routers.prometheus.middlewares=simpleauth"
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'  
       - '--storage.tsdb.path=/prometheus'        
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
       - '--web.enable-lifecycle'
+      - '--web.enable-admin-api'
+      - "--web.external-url=/prometheus"
     deploy:
       mode: replicated
       replicas: 1
       placement:
         constraints: [node.role == manager]
-    ports:
-      - "9090:9090"
+      resources:
+        limits:
+          memory: 256M
+          cpus: "1"
+        reservations:
+          cpus: "0.1"
     networks:
       - monitoring
 
   grafana:
-    image: grafana/grafana:latest
+    image: wsapon/mcswarm-grafana:latest
     environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_AUTH_DISABLE_LOGIN_FORM=true  
       - GF_SERVER_ENFORCE_DOMAIN=false
       - GF_SERVER_HTTP_ADDR=0.0.0.0
       - GF_SERVER_HTTP_PORT=3000
       - GF_SERVER_PROTOCOL=http
+      - GF_AUTH_ANONYMOUS_ENABLED=TRUE
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_BASIC_ENABLED=FALSE
       - GF_SERVER_ROOT_URL=%(protocol)s://%(domain)s:%(http_port)s/grafana/
+
     deploy:
       mode: replicated
       replicas: 1
       placement:
         constraints: [node.role == manager]
+      resources:
+        limits:
+          memory: 256M
+          cpus: "1"
+        reservations:
+          cpus: "0.1"
     volumes:
       - grafana_data:/var/lib/grafana
-      - ${GRAFANA_DIR_PATH}/provisioning:/etc/grafana/provisioning
-      - ${GRAFANA_DIR_PATH}/dashboards:/var/lib/grafana/dashboards
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.grafana.rule=PathPrefix(`/grafana`)"
@@ -70,10 +95,8 @@ services:
       - "traefik.http.routers.grafana.priority=10"
       - "traefik.http.services.grafana.loadbalancer.server.port=3000"
       - "traefik.http.middlewares.grafana-stripprefix.stripprefix.prefixes=/grafana"
-      - "traefik.http.routers.grafana.middlewares=grafana-stripprefix"
+      - "traefik.http.routers.grafana.middlewares=grafana-stripprefix, simpleauth"
       - "traefik.docker.network=monitoring"
-    ports:
-      - "3000:3000"
     depends_on:
       - prometheus
     networks:
