@@ -1,0 +1,4 @@
+XMS=8192m
+XMX=10240m
+SERVER_DIR=/home/t4nello/server
+JAR_FILE_NAME=server.jar

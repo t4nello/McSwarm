@@ -23,6 +23,12 @@ services:
           cpus: "1"
         reservations:
           cpus: "0.1"
+      resources:
+        limits:
+          memory: 256M
+          cpus: "1"
+        reservations:
+          cpus: "0.1"
     networks:
       - monitoring
 
@@ -47,11 +53,19 @@ services:
       - '--web.enable-lifecycle'
       - '--web.enable-admin-api'
       - "--web.external-url=/prometheus"
+      - '--web.enable-admin-api'
+      - "--web.external-url=/prometheus"
     deploy:
       mode: replicated
       replicas: 1
       placement:
         constraints: [node.role == manager]
+      resources:
+        limits:
+          memory: 256M
+          cpus: "1"
+        reservations:
+          cpus: "0.1"
       resources:
         limits:
           memory: 256M
@@ -85,6 +99,12 @@ services:
           cpus: "1"
         reservations:
           cpus: "0.1"
+      resources:
+        limits:
+          memory: 256M
+          cpus: "1"
+        reservations:
+          cpus: "0.1"
     volumes:
       - grafana_data:/var/lib/grafana
     labels:
@@ -95,6 +115,7 @@ services:
       - "traefik.http.routers.grafana.priority=10"
       - "traefik.http.services.grafana.loadbalancer.server.port=3000"
       - "traefik.http.middlewares.grafana-stripprefix.stripprefix.prefixes=/grafana"
+      - "traefik.http.routers.grafana.middlewares=grafana-stripprefix, simpleauth"
       - "traefik.http.routers.grafana.middlewares=grafana-stripprefix, simpleauth"
       - "traefik.docker.network=monitoring"
     depends_on:
