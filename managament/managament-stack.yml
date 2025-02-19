@@ -9,6 +9,7 @@ services:
       - --log.level=DEBUG
       - --api=true
       - --providers.docker=true
+      - --metrics.prometheus=true
       - --providers.docker.exposedByDefault=false
       - --entryPoints.web.address=:80  
       - --entrypoints.websecure.address=:443
