@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   minecraft:
-    image: openjdk:{JDK_IMAGE_TAG:19-jdk}
+    image: openjdk:{JDK_IMAGE_TAG:-19-jdk}
     volumes:
       - ${SERVER_DIR}:/server
     command: bash -c "cd /server/ && java -Xms${XMS:-1024m} -Xmx${XMX:-4098m} -jar ${JAR_FILE_NAME:-server.jar} nogui"
