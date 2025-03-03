@@ -54,7 +54,7 @@ Before deployment the Minecraft server stack it is necessary to create folder on
 | XMX                        | Server     | No        | 4098m                                      |
 | SERVER_DIR                 | Server     | Yes       |                                            |
 | JAR_FILE_NAME              | Server     | Yes       | server.jar                                 |
-| JDK_IMAGE_TAG              | Server     | No        | 19-jdk                                     |
+| JDK_IMAGE_TAG              | Server     | Yes        | 19-jdk                                     |
 
 Example values of the Environment Variables are stored in the `example-env-values` folder
 
