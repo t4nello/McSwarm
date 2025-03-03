@@ -9,8 +9,6 @@ A set of stacks to deploy minecraft server on linux OS with:
 - Portainer
 - Portainer Agent
 
-Minecraft server is based on the JDK 21 image 
-
 ## Prerequisites
 
 To propelly setup the swarm cluster you have to install docker engine accoring to the instructions on https://docs.docker.com/engine/install/, afer installation follow the steps on https://docs.docker.com/engine/install/linux-postinstall/ .
