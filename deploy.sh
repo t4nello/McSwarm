@@ -6,10 +6,10 @@ if ! command -v htpasswd &> /dev/null; then
 fi
 
 
-if [ ! -f "./managament/usersfile" ]; then
+if [ ! -f "./manegement/usersfile" ]; then
   echo "Error: 'usersfile' has not been found."
   echo "Create it using:"
-  echo "  htpasswd -Bc -C 6 ./managament/usersfile <username>"
+  echo "  htpasswd -Bc -C 6 ./manegement/usersfile <username>"
   echo "Then try deployment again."
   exit 1
 fi
@@ -26,16 +26,16 @@ if ! [[ "$PORT" =~ ^[0-9]+$ ]] || [ "$PORT" -lt 0 ] || [ "$PORT" -gt 65535 ]; th
   exit 1
 fi
 
-echo "MINECRAFT_SERVER_PORT=$PORT" > ./managament/managament-stack.env
+echo "MINECRAFT_SERVER_PORT=$PORT" > ./manegement/manegement-stack.env
 
 echo "Minecraft server port is set to: $PORT"
 
 
-export $(cat ./managament/managament-stack.env | xargs)
+export $(cat ./manegement/manegement-stack.env | xargs)
 
 
-processed="./managament/managament-stack-processed.yml"
-docker stack config --compose-file ./managament/managament-stack.yml > "$processed"
+processed="./manegement/manegement-stack-processed.yml"
+docker stack config --compose-file ./manegement/manegement-stack.yml > "$processed"
 
 
 docker swarm init 2>/dev/null || echo "Swarm already initialized."
@@ -45,4 +45,4 @@ docker network create --driver overlay --scope swarm monitoring 2>/dev/null || e
 docker network create --driver overlay --scope swarm management 2>/dev/null || echo "Network 'management' already exists."
 docker network create --driver overlay --scope swarm minecraft 2>/dev/null || echo "Network 'minecraft' already exists."
 
-docker stack deploy --compose-file "$processed" managament-stack
+docker stack deploy --compose-file "$processed" manegement-stack
