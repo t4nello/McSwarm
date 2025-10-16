@@ -28,7 +28,7 @@ cd McSwarm
 4. create username and password for traefik dashboard:
 
 ```bash
-htpasswd -Bc -C 6 ./managament/usersfile <username>
+htpasswd -Bc -C 6 ./management/usersfile <username>
 ```
 At this point you will be asked to type then retype password.
 
